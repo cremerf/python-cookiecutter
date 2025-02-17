@@ -26,10 +26,8 @@ There are two ways to use this template:
 ### 1. Using GitHub (Recommended)
 
 ```bash
-cookiecutter gh:YOUR_GITHUB_USERNAME/python-cookiecutter
+cookiecutter gh:cremerf/python-cookiecutter
 ```
-
-Replace `YOUR_GITHUB_USERNAME` with your actual GitHub username after you push this template to your GitHub account.
 
 ### 2. Using Local Template
 
@@ -43,28 +41,29 @@ cookiecutter path/to/python-cookiecutter
 
 When you create a project, you'll be prompted for these values:
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `project_name` | Your project's human-readable name | "My Python Project" |
-| `project_slug` | Your project's Python package name | Derived from project_name |
+| Option                  | Description                         | Default                                      |
+| ----------------------- | ----------------------------------- | -------------------------------------------- |
+| `project_name`        | Your project's human-readable name  | "My Python Project"                          |
+| `project_slug`        | Your project's Python package name  | Derived from project_name                    |
 | `project_description` | A short description of your project | "A Python project with best practices setup" |
-| `author_name` | Your name | "Your Name" |
-| `author_email` | Your email | "your.email@example.com" |
-| `python_version` | Python version to use | "3.11" |
-| `open_source_license` | License to use | Choice of MIT, BSD-3, GPL-3, Apache-2 |
-| `use_pytest` | Include pytest testing | "y" |
-| `use_black` | Include Black code formatting | "y" |
-| `use_flake8` | Include Flake8 linting | "y" |
-| `use_mypy` | Include mypy type checking | "y" |
-| `use_isort` | Include isort import sorting | "y" |
-| `use_pre_commit` | Include pre-commit hooks | "y" |
-| `use_github_actions` | Include GitHub Actions CI/CD | "y" |
+| `author_name`         | Your name                           | "Your Name"                                  |
+| `author_email`        | Your email                          | "your.email@example.com"                     |
+| `python_version`      | Python version to use               | "3.11"                                       |
+| `open_source_license` | License to use                      | Choice of MIT, BSD-3, GPL-3, Apache-2        |
+| `use_pytest`          | Include pytest testing              | "y"                                          |
+| `use_black`           | Include Black code formatting       | "y"                                          |
+| `use_flake8`          | Include Flake8 linting              | "y"                                          |
+| `use_mypy`            | Include mypy type checking          | "y"                                          |
+| `use_isort`           | Include isort import sorting        | "y"                                          |
+| `use_pre_commit`      | Include pre-commit hooks            | "y"                                          |
+| `use_github_actions`  | Include GitHub Actions CI/CD        | "y"                                          |
 
 ## What's Included
 
 After running the template, your project will have:
 
 1. **Project Structure**:
+
    ```
    your_project/
    ├── .github/
@@ -79,8 +78,8 @@ After running the template, your project will have:
    ├── README.md
    └── LICENSE
    ```
-
 2. **Development Tools**:
+
    - Black for code formatting
    - Flake8 for code linting
    - isort for import sorting
@@ -88,8 +87,8 @@ After running the template, your project will have:
    - pytest for testing
    - pre-commit for git hooks
    - GitHub Actions for CI/CD
-
 3. **Quality Assurance**:
+
    - Automated testing with pytest
    - Code coverage reporting
    - PR title linting
@@ -110,4 +109,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the BSD-3-Clause License - see the LICENSE file for details. 
+This project is licensed under the BSD-3-Clause License - see the LICENSE file for details.

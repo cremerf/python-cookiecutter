@@ -1,6 +1,6 @@
-# {{ cookiecutter.project_name }}
+# My Python Cookie Cutter Project
 
-{{ cookiecutter.project_description }}
+A Python project with best practices setup
 
 ## Features
 
@@ -49,6 +49,7 @@ This project uses several tools to ensure code quality:
 Pre-commit is a framework for managing and maintaining multi-language pre-commit hooks. Here's how to work with it:
 
 #### Initial Setup
+
 ```bash
 # Install pre-commit in your environment
 pip install pre-commit
@@ -82,6 +83,7 @@ pre-commit run --files path/to/file1.py path/to/file2.py
 When pre-commit hooks fail, here's how to fix common issues:
 
 1. **Code Formatting Issues (Black, isort)**:
+
 ```bash
 # Format all Python files with Black
 black .
@@ -91,30 +93,35 @@ isort .
 ```
 
 2. **Docstring Formatting Issues**:
+
 ```bash
 # Format docstrings
 docformatter --in-place --wrap-summaries=88 --wrap-descriptions=88 **/*.py
 ```
 
 3. **Unused Imports/Variables**:
+
 ```bash
 # Remove unused imports and variables
 autoflake --in-place --remove-all-unused-imports --remove-unused-variables **/*.py
 ```
 
 4. **Type Checking Issues (mypy)**:
+
 ```bash
 # Run mypy to see detailed type errors
 mypy .
 ```
 
 5. **Flake8 Issues**:
+
 ```bash
 # Run flake8 to see style issues
 flake8 .
 ```
 
 After fixing the issues:
+
 ```bash
 # Stage the changes
 git add .
@@ -126,6 +133,7 @@ git commit -m "type: your commit message"
 #### Skipping Hooks
 
 In rare cases, you might need to skip pre-commit hooks (not recommended):
+
 ```bash
 git commit -m "your message" --no-verify
 ```
@@ -133,6 +141,7 @@ git commit -m "your message" --no-verify
 #### Commit Message Format
 
 Commit messages must follow the conventional commits format and start with one of:
+
 - `feat:` (new feature)
 - `fix:` (bug fix)
 - `docs:` (documentation changes)
@@ -165,8 +174,8 @@ pytest tests/ --cov={{ cookiecutter.project_slug }}
 
 ## License
 
-This project is licensed under the {{ cookiecutter.open_source_license }} License - see the LICENSE file for details.
+This project is licensed under the BSD-3-Clause License - see the LICENSE file for details.
 
 ## Author
 
-{{ cookiecutter.author_name }} ({{ cookiecutter.author_email }}) 
+Fede Cremer . [cremerf.mle@gmail.com](mailto:cremerf.mle@gmail.com)
