@@ -1,0 +1,18 @@
+{
+    "project_name": "My Python Cookie Cutter Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_description": "A Python project with best practices setup",
+    "author_name": "Fede Cremer",
+    "author_email": "cremerf.mle@gmail.com",
+    "author_gh_handle": "cremerf",
+    "author_url": "https://github.com/cremerf",
+    "python_version": "3.11",
+    "open_source_license": ["MIT", "BSD-3-Clause", "GNU GPL v3.0", "Apache Software License 2.0"],
+    "use_pytest": "y",
+    "use_black": "y",
+    "use_flake8": "y",
+    "use_mypy": "y",
+    "use_isort": "y",
+    "use_pre_commit": "y",
+    "use_github_actions": "y"
+} 
