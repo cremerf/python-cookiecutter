@@ -57,7 +57,7 @@ exclude = [
 ]
 
 [project]
-name = "your-project"
+name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 requires-python = ">={{ cookiecutter.python_version }}"
@@ -89,4 +89,4 @@ dev = [
 ]
 
 [tool.setuptools_scm]
-write_to = "src/your-project/_version.py"
+write_to = "src/{{ cookiecutter.project_slug }}/_version.py"
