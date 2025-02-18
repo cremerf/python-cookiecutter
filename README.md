@@ -40,14 +40,16 @@ project_name/
    cookiecutter gh:cremerf/python-cookiecutter
    ```
 
-2. Navigate to your project and create the virtual environment:
+2. Navigate to your project and initialize git:
    ```bash
    cd your_project_name
-   make setup
+   make init-git
    ```
 
-3. Activate the virtual environment:
+3. Create and activate the virtual environment:
    ```bash
+   make setup
+   
    # On Unix/macOS
    source .venv/bin/activate
    
@@ -55,7 +57,12 @@ project_name/
    .venv\Scripts\activate
    ```
 
-4. Set up the development environment (this will initialize git, install dependencies, and set up pre-commit hooks):
+4. Install dependencies:
+   ```bash
+   make install
+   ```
+
+5. Set up pre-commit hooks:
    ```bash
    make init-hooks
    ```
@@ -77,13 +84,13 @@ The `cookiecutter.json` file customizes your project during generation. You'll b
 ## Available Make Commands
 
 - `make help` - Show available commands
+- `make init-git` - Initialize git repository and create initial commit
 - `make setup` - Create Python virtual environment
-- `make init-git` - Initialize git repository
-- `make install` - Initialize git (if needed) and install dependencies
-- `make init-hooks` - Install dependencies (if needed) and set up pre-commit hooks
+- `make install` - Install project dependencies (requires activated virtual environment)
+- `make init-hooks` - Set up pre-commit hooks (requires activated virtual environment)
 - `make clean` - Clean up generated files
 
-Note: The commands are designed to run in sequence, so you typically only need to run `make setup` followed by `make init-hooks` after activating the virtual environment.
+Note: The commands `make install` and `make init-hooks` require an activated virtual environment. The Makefile will check for this and provide helpful error messages if the environment is not activated.
 
 ## What's Included
 

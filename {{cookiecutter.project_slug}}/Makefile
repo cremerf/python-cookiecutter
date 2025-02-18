@@ -1,4 +1,4 @@
-.PHONY: help setup install init-git init-hooks clean
+.PHONY: help init-git setup install init-hooks clean
 
 # Default Python version from cookiecutter
 PYTHON_VERSION = {{ cookiecutter.python_version }}
@@ -7,34 +7,50 @@ PROJECT_NAME = $(shell basename $(CURDIR))
 
 help:
 	@echo "Available commands:"
-	@echo "make setup         - Create and setup Python venv environment"
+	@echo "make init-git      - Initialize git repository and create initial commit"
+	@echo "make setup         - Create Python virtual environment"
 	@echo "make install       - Install project dependencies"
-	@echo "make init-git      - Initialize git repository"
-	@echo "make init-hooks    - Initialize pre-commit hooks"
+	@echo "make init-hooks    - Set up pre-commit hooks"
 	@echo "make clean         - Clean up generated files"
-
-setup:
-	@echo "🐍 Creating Python virtual environment..."
-	python3 -m venv .venv
-	@echo "🔌 Activating virtual environment..."
-	@echo "To activate the virtual environment, run:"
-	@echo "source .venv/bin/activate  # On Unix/macOS"
-	@echo ".venv\\Scripts\\activate    # On Windows"
 
 init-git:
 	@if [ ! -d .git ]; then \
 		echo "📦 Initializing git repository..."; \
 		git init; \
 		git add .; \
-		git commit -m "feat: initial commit"; \
+		git commit -m "feat: initial project structure"; \
+		echo "✨ Git repository initialized with initial commit"; \
+		echo "Next steps:"; \
+		echo "1. Create a repository on GitHub"; \
+		echo "2. Run: git remote add origin <your-repo-url>"; \
+		echo "3. Run: git push -u origin main"; \
+	else \
+		echo "🔍 Git repository already initialized"; \
 	fi
 
-install: init-git
+setup: init-git
+	@echo "🐍 Creating Python virtual environment..."
+	python3 -m venv .venv
+	@echo "🔌 To activate the virtual environment, run:"
+	@echo "source .venv/bin/activate  # On Unix/macOS"
+	@echo ".venv\\Scripts\\activate    # On Windows"
+
+install:
+	@if [ -z "$${VIRTUAL_ENV}" ]; then \
+		echo "❌ Virtual environment is not activated. Please activate it first."; \
+		echo "Run: source .venv/bin/activate  # On Unix/macOS"; \
+		echo "  or: .venv\\Scripts\\activate    # On Windows"; \
+		exit 1; \
+	fi
 	@echo "📚 Installing dependencies..."
 	python3 -m pip install --upgrade pip
 	pip install -e ".[dev]"
 
-init-hooks: install
+init-hooks:
+	@if [ -z "$${VIRTUAL_ENV}" ]; then \
+		echo "❌ Virtual environment is not activated. Please activate it first."; \
+		exit 1; \
+	fi
 	@echo "🔧 Setting up pre-commit hooks..."
 	pre-commit install
 	pre-commit install --hook-type commit-msg
