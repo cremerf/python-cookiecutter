@@ -15,4 +15,4 @@
     "use_isort": "y",
     "use_pre_commit": "y",
     "use_github_actions": "y"
-} 
+}

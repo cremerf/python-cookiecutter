@@ -51,10 +51,10 @@ project_name/
 3. Create and activate the virtual environment:
    ```bash
    make setup
-   
+
    # On Unix/macOS
    source .venv/bin/activate
-   
+
    # On Windows
    .venv\Scripts\activate
    ```
