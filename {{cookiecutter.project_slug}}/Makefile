@@ -39,6 +39,10 @@ setup: init-git
 	@echo "🔌 To activate the virtual environment, run:"
 	@echo "source .venv/bin/activate  # On Unix/macOS"
 	@echo ".venv\\Scripts\\activate    # On Windows"
+	@if [ ! -f .gitignore ]; then \
+		echo "❌ Error: .gitignore file is missing. Please check your project structure."; \
+		exit 1; \
+	fi
 
 install:
 	@if [ -z "$${VIRTUAL_ENV}" ]; then \
