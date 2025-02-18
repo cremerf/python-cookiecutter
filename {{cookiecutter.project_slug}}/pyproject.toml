@@ -29,13 +29,6 @@ use_parentheses = true
 ensure_newline_before_comments = true
 line_length = 88
 
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "-ra -q --doctest-modules"
-testpaths = [
-    "tests",
-]
-
 [tool.mypy]
 python_version = "{{ cookiecutter.python_version }}"
 warn_return_any = true
@@ -49,6 +42,19 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 warn_no_return = true
 warn_unreachable = true
+strict_optional = true
+disallow_untyped_calls = true
+disallow_subclassing_any = true
+disallow_any_generics = true
+disallow_any_unimported = true
+disallow_any_expr = false
+disallow_any_decorated = false
+show_error_codes = true
+pretty = true
+exclude = [
+    'tests/',
+    'setup.py',
+]
 
 [project]
 name = "{{ cookiecutter.project_slug }}"
@@ -68,8 +74,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0.0",
-    "pytest-cov>=4.1.0",
     "black>=24.1.1",
     "isort>=5.13.2",
     "flake8>=7.0.0",

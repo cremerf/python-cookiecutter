@@ -1,111 +1,112 @@
 # Python Project Cookiecutter Template
 
-A comprehensive cookiecutter template for Python projects with best practices, including code quality tools, testing setup, and GitHub Actions CI/CD.
+A streamlined cookiecutter template for Python projects that enforces code quality, type checking, and CI/CD best practices.
 
-## Features
+## Why This Template?
 
-- Modern Python packaging with `pyproject.toml`
-- Code formatting with Black, isort, and docformatter
-- Code quality checks with Flake8 and various plugins
-- Static type checking with mypy
-- Automated testing with pytest
-- Pre-commit hooks for code quality
-- GitHub Actions for CI/CD
-- PR title linting for conventional commits
-- Coverage reporting with Codecov
+This template provides a standardized project structure with integrated tools for:
+- Code formatting and quality (Black, isort, Flake8)
+- Static type checking (mypy)
+- Automated CI/CD with GitHub Actions
+- Pre-commit hooks for consistent code quality
+
+## Directory Structure
+
+After using this template, your project will have this structure:
+```
+project_name/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── ci/
+├── src/
+├── .pre-commit-config.yaml
+├── pyproject.toml
+├── Makefile
+└── README.md
+```
 
 ## Requirements
 
-- Python 3.11+
-- [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) (`pip install cookiecutter`)
+- Python {{ cookiecutter.python_version }}+
+- Cookiecutter (`pip install cookiecutter`)
+- Make (usually pre-installed on Unix/macOS, for Windows install via chocolatey or scoop)
 
-## Usage
+## Quick Start
 
-There are two ways to use this template:
+1. Generate your project:
+   ```bash
+   cookiecutter gh:cremerf/python-cookiecutter
+   ```
 
-### 1. Using GitHub (Recommended)
+2. Navigate to your project and set up the environment:
+   ```bash
+   cd your_project_name
+   make setup
+   source .venv/bin/activate  # On Unix/macOS
+   # OR
+   .venv\Scripts\activate     # On Windows
+   ```
 
-```bash
-cookiecutter gh:cremerf/python-cookiecutter
-```
+3. Install dependencies and set up git:
+   ```bash
+   make install
+   make init-git
+   make init-hooks
+   ```
 
-### 2. Using Local Template
+## Configuration Options (cookiecutter.json)
 
-If you've cloned this repository locally:
+The `cookiecutter.json` file customizes your project during generation. You'll be prompted for:
 
-```bash
-cookiecutter path/to/python-cookiecutter
-```
+| Option                | Description                         | Default                                    |
+|----------------------|-------------------------------------|----------------------------------------------|
+| `project_name`       | Your project's human-readable name  | "My Python Project"                         |
+| `project_slug`       | Your project's package name         | Derived from project_name                   |
+| `project_description`| Short project description           | "A Python project with best practices setup"|
+| `author_name`        | Your name                           | "Your Name"                                 |
+| `author_email`       | Your email                          | "your.email@example.com"                    |
+| `python_version`     | Python version to use               | "3.11"                                      |
+| `open_source_license`| Project license                     | Choice of MIT, BSD-3, GPL-3, Apache-2       |
 
-## Template Options
+## Available Make Commands
 
-When you create a project, you'll be prompted for these values:
-
-| Option                  | Description                         | Default                                      |
-| ----------------------- | ----------------------------------- | -------------------------------------------- |
-| `project_name`        | Your project's human-readable name  | "My Python Project"                          |
-| `project_slug`        | Your project's Python package name  | Derived from project_name                    |
-| `project_description` | A short description of your project | "A Python project with best practices setup" |
-| `author_name`         | Your name                           | "Your Name"                                  |
-| `author_email`        | Your email                          | "your.email@example.com"                     |
-| `python_version`      | Python version to use               | "3.11"                                       |
-| `open_source_license` | License to use                      | Choice of MIT, BSD-3, GPL-3, Apache-2        |
-| `use_pytest`          | Include pytest testing              | "y"                                          |
-| `use_black`           | Include Black code formatting       | "y"                                          |
-| `use_flake8`          | Include Flake8 linting              | "y"                                          |
-| `use_mypy`            | Include mypy type checking          | "y"                                          |
-| `use_isort`           | Include isort import sorting        | "y"                                          |
-| `use_pre_commit`      | Include pre-commit hooks            | "y"                                          |
-| `use_github_actions`  | Include GitHub Actions CI/CD        | "y"                                          |
+- `make help` - Show available commands
+- `make setup` - Create Python virtual environment
+- `make install` - Install project dependencies
+- `make init-git` - Initialize git repository
+- `make init-hooks` - Set up pre-commit hooks
+- `make clean` - Clean up generated files
 
 ## What's Included
 
-After running the template, your project will have:
-
-1. **Project Structure**:
-
-   ```
-   your_project/
-   ├── .github/
-   │   └── workflows/
-   │       └── ci.yml
-   ├── your_project/
-   │   └── __init__.py
-   ├── tests/
-   ├── .gitignore
-   ├── .pre-commit-config.yaml
-   ├── pyproject.toml
-   ├── README.md
-   └── LICENSE
-   ```
-2. **Development Tools**:
-
+1. **Code Quality Tools**:
    - Black for code formatting
    - Flake8 for code linting
    - isort for import sorting
    - mypy for static type checking
-   - pytest for testing
-   - pre-commit for git hooks
-   - GitHub Actions for CI/CD
-3. **Quality Assurance**:
 
-   - Automated testing with pytest
-   - Code coverage reporting
-   - PR title linting
-   - Comprehensive pre-commit hooks
+2. **Development Workflow**:
+   - Pre-commit hooks for automated code quality checks
+   - GitHub Actions for CI/CD
+   - PR title linting for conventional commits
+
+3. **Project Structure**:
+   - `src/` directory for all your Python modules
+   - `ci/` directory for CI/CD related scripts
+   - `.github/` directory for GitHub Actions workflows
 
 ## After Generation
 
-After generating your project:
-
 1. Create a new GitHub repository
-2. Push your code
-3. Set up branch protection rules
-4. Add any required secrets (e.g., `CODECOV_TOKEN`)
+2. Initialize git and push your code:
+   ```bash
+   git remote add origin your-repo-url
+   git push -u origin main
+   ```
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+3. Set up branch protection rules in GitHub
+4. Start developing in the `src/` directory
 
 ## License
 
