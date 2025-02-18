@@ -1,0 +1,69 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+    -   id: debug-statements
+    -   id: check-case-conflict
+
+-   repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+    -   id: black
+
+-   repo: https://github.com/PyCQA/isort
+    rev: 6.0.0
+    hooks:
+    -   id: isort
+
+-   repo: https://github.com/PyCQA/flake8
+    rev: 7.1.2
+    hooks:
+    -   id: flake8
+        args:
+        - --ignore=D100,D103,C419,D104
+        - --max-line-length=88
+        - --exclude=.git,__pycache__,build,dist,*.egg-info
+        additional_dependencies:
+        -   flake8-docstrings
+        -   flake8-bugbear
+        -   flake8-comprehensions
+        -   flake8-simplify
+
+-   repo: https://github.com/PyCQA/autoflake
+    rev: v2.3.1
+    hooks:
+    -   id: autoflake
+        args: [
+            --in-place,
+            --remove-all-unused-imports,
+            --remove-unused-variables,
+        ]
+
+#-   repo: https://github.com/PyCQA/docformatter
+#    rev: v1.7.5 # TODO: wait for https://github.com/PyCQA/docformatter/issues/293
+#    hooks:
+#    -   id: docformatter
+#        language: python
+#        args: [--in-place, --wrap-summaries=88, --wrap-descriptions=88]
+
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+    -   id: mypy
+        additional_dependencies:
+        -   types-setuptools
+        -   types-PyYAML
+        -   types-python-dateutil
+        -   types-requests
+        -   types-toml
+        -   types-urllib3
+
+-   repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.2.2
+    hooks:
+    -   id: commitizen
+        stages: [commit-msg]
