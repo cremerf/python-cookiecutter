@@ -19,7 +19,9 @@ project_name/
 │   └── workflows/
 │       └── ci.yml
 ├── ci/
+├── scripts/
 ├── src/
+│   └── __init__.py
 ├── .pre-commit-config.yaml
 ├── pyproject.toml
 ├── Makefile
@@ -92,6 +94,19 @@ The `cookiecutter.json` file customizes your project during generation. You'll b
 
 Note: The commands `make install` and `make init-hooks` require an activated virtual environment. The Makefile will check for this and provide helpful error messages if the environment is not activated.
 
+## Project Structure Explained
+
+1. **Source Code**:
+   - `src/` - Main package directory for your Python modules
+   - `scripts/` - Utility scripts and tools
+   - `ci/` - Continuous Integration related scripts
+
+2. **Development Tools**:
+   - `.github/workflows/` - GitHub Actions CI/CD configurations
+   - `.pre-commit-config.yaml` - Pre-commit hook configurations
+   - `pyproject.toml` - Project configuration and dependencies
+   - `Makefile` - Development workflow automation
+
 ## What's Included
 
 1. **Code Quality Tools**:
@@ -104,11 +119,6 @@ Note: The commands `make install` and `make init-hooks` require an activated vir
    - Pre-commit hooks for automated code quality checks
    - GitHub Actions for CI/CD
    - PR title linting for conventional commits
-
-3. **Project Structure**:
-   - `src/` directory for all your Python modules
-   - `ci/` directory for CI/CD related scripts
-   - `.github/` directory for GitHub Actions workflows
 
 ## After Generation
 

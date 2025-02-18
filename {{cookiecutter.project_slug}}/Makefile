@@ -19,6 +19,11 @@ init-git:
 		git init; \
 		git add .; \
 		git commit -m "feat: initial project structure"; \
+		BRANCH_NAME=$$(git branch --show-current); \
+		if [ "$$BRANCH_NAME" = "master" ]; then \
+			echo "🔄 Renaming default branch to main..."; \
+			git branch -m master main; \
+		fi; \
 		echo "✨ Git repository initialized with initial commit"; \
 		echo "Next steps:"; \
 		echo "1. Create a repository on GitHub"; \
@@ -43,7 +48,7 @@ install:
 		exit 1; \
 	fi
 	@echo "📚 Installing dependencies..."
-	python3 -m pip install --upgrade pip
+	python3 -m pip install --upgrade pip setuptools wheel
 	pip install -e ".[dev]"
 
 init-hooks:
