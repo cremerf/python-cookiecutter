@@ -31,6 +31,7 @@ project_name/
 - Python {{ cookiecutter.python_version }}+
 - Cookiecutter (`pip install cookiecutter`)
 - Make (usually pre-installed on Unix/macOS, for Windows install via chocolatey or scoop)
+- Git (required for version management and pre-commit hooks)
 
 ## Quick Start
 
@@ -39,19 +40,23 @@ project_name/
    cookiecutter gh:cremerf/python-cookiecutter
    ```
 
-2. Navigate to your project and set up the environment:
+2. Navigate to your project and create the virtual environment:
    ```bash
    cd your_project_name
    make setup
-   source .venv/bin/activate  # On Unix/macOS
-   # OR
-   .venv\Scripts\activate     # On Windows
    ```
 
-3. Install dependencies and set up git:
+3. Activate the virtual environment:
    ```bash
-   make install
-   make init-git
+   # On Unix/macOS
+   source .venv/bin/activate
+   
+   # On Windows
+   .venv\Scripts\activate
+   ```
+
+4. Set up the development environment (this will initialize git, install dependencies, and set up pre-commit hooks):
+   ```bash
    make init-hooks
    ```
 
@@ -73,10 +78,12 @@ The `cookiecutter.json` file customizes your project during generation. You'll b
 
 - `make help` - Show available commands
 - `make setup` - Create Python virtual environment
-- `make install` - Install project dependencies
 - `make init-git` - Initialize git repository
-- `make init-hooks` - Set up pre-commit hooks
+- `make install` - Initialize git (if needed) and install dependencies
+- `make init-hooks` - Install dependencies (if needed) and set up pre-commit hooks
 - `make clean` - Clean up generated files
+
+Note: The commands are designed to run in sequence, so you typically only need to run `make setup` followed by `make init-hooks` after activating the virtual environment.
 
 ## What's Included
 
@@ -99,13 +106,15 @@ The `cookiecutter.json` file customizes your project during generation. You'll b
 ## After Generation
 
 1. Create a new GitHub repository
-2. Initialize git and push your code:
+
+2. Link and push to your repository:
    ```bash
    git remote add origin your-repo-url
    git push -u origin main
    ```
 
 3. Set up branch protection rules in GitHub
+
 4. Start developing in the `src/` directory
 
 ## License

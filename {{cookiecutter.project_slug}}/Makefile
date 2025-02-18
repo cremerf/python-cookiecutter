@@ -15,28 +15,26 @@ help:
 
 setup:
 	@echo "🐍 Creating Python virtual environment..."
-	python -m venv .venv
+	python3 -m venv .venv
 	@echo "🔌 Activating virtual environment..."
 	@echo "To activate the virtual environment, run:"
 	@echo "source .venv/bin/activate  # On Unix/macOS"
 	@echo ".venv\\Scripts\\activate    # On Windows"
 
-install:
-	@echo "📚 Installing dependencies..."
-	python -m pip install --upgrade pip
-	pip install -e ".[dev]"
-
 init-git:
 	@if [ ! -d .git ]; then \
 		echo "📦 Initializing git repository..."; \
 		git init; \
-		if [ ! -f .git/refs/heads/main ]; then \
-			git add .; \
-			git commit -m "feat: initial commit"; \
-		fi \
+		git add .; \
+		git commit -m "feat: initial commit"; \
 	fi
 
-init-hooks:
+install: init-git
+	@echo "📚 Installing dependencies..."
+	python3 -m pip install --upgrade pip
+	pip install -e ".[dev]"
+
+init-hooks: install
 	@echo "🔧 Setting up pre-commit hooks..."
 	pre-commit install
 	pre-commit install --hook-type commit-msg
